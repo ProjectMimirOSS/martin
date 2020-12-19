@@ -16,7 +16,7 @@ services:
   backend:
     container_name: martin-backend
     build:
-      context: ./martin-backend
+      context: ./backend
       dockerfile: Dockerfile
     image: martin-backend
     ports: 
@@ -29,7 +29,7 @@ services:
     container_name: martin-frontend 
     tty: true
     build:
-      context: ./project-martin
+      context: ./frontend
       dockerfile: Dockerfile
     image: martin-frontend
     ports:

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
+}
+button, ::placeholder {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+p, div, h1, h2, h3, h4, h5, h6, span {
+  color: var(--martin-text-color);
+}
+
+p, div {
+  font-size: 15px;
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  --martin-color-primary: #428cff;
+  --martin-color-primary-rgb: 66, 140, 255;
+  --martin-color-primary-contrast: #ffffff;
+  --martin-color-primary-contrast-rgb: 255, 255, 255;
+  --martin-color-primary-shade: #3a7be0;
+  --martin-color-primary-tint: #5598ff;
+
+  --martin-color-secondary: #50c8ff;
+  --martin-color-secondary-rgb: 80, 200, 255;
+  --martin-color-secondary-contrast: #ffffff;
+  --martin-color-secondary-contrast-rgb: 255, 255, 255;
+  --martin-color-secondary-shade: #46b0e0;
+  --martin-color-secondary-tint: #62ceff;
+
+  --martin-color-tertiary: #6a64ff;
+  --martin-color-tertiary-rgb: 106, 100, 255;
+  --martin-color-tertiary-contrast: #ffffff;
+  --martin-color-tertiary-contrast-rgb: 255, 255, 255;
+  --martin-color-tertiary-shade: #5d58e0;
+  --martin-color-tertiary-tint: #7974ff;
+
+  --martin-color-success: #55a630;
+  --martin-color-success-rgb: 47, 223, 117;
+  --martin-color-success-contrast: #000000;
+  --martin-color-success-contrast-rgb: 0, 0, 0;
+  --martin-color-success-shade: #29c467;
+  --martin-color-success-tint: #52b788;
+
+  --martin-color-warning: #F5AA41;
+  --martin-color-warning-rgb: 255, 213, 52;
+  --martin-color-warning-contrast: #000000;
+  --martin-color-warning-contrast-rgb: 0, 0, 0;
+  --martin-color-warning-shade: #e0bb2e;
+  --martin-color-warning-tint: #ffd948;
+
+  --martin-color-danger: #ff4961;
+  --martin-color-danger-rgb: 255, 73, 97;
+  --martin-color-danger-contrast: #ffffff;
+  --martin-color-danger-contrast-rgb: 255, 255, 255;
+  --martin-color-danger-shade: #e04055;
+  --martin-color-danger-tint: #F08A8A;
+
+
+  --martin-color-medium: #989aa2;
+  --martin-color-medium-rgb: 152, 154, 162;
+  --martin-color-medium-contrast: #000000;
+  --martin-color-medium-contrast-rgb: 0, 0, 0;
+  --martin-color-medium-shade: #86888f;
+  --martin-color-medium-tint: #a2a4ab;
+}
+
+.dark {
+  --martin-color-light: #2F2F2F;
+  --martin-color-dark: #262626;
+  --martin-color-light-rgb: 34, 36, 40;
+  --martin-color-light-contrast: #ffffff;
+  --martin-color-light-contrast-rgb: 255, 255, 255;
+  --martin-color-light-shade: #1B1B1B;
+  --martin-color-light-tint: #383a3e;
+  --martin-color-light-title: #6d6d6d;
+
+
+  --martin-background-color: #121212;
+  --martin-background-color-rgb: 18, 18, 18;
+  --martin-text-color: #ffffff;
+  --martin-text-color-rgb: 255, 255, 255;
+  --martin-border-color: #222222;
+  --martin-card-background: #1e1e1e;
+  --martin-box-shadow: -1px -1px 3px 2px rgba(153, 153, 153, 0.1), 1px 1px 3px 2px rgba(153, 153, 153, 0.1);
+
+}
+
+.light {
+  --martin-color-dark: #f4f5f8;
+  --martin-color-light: #ffffff;
+  --martin-color-light-rgb: 244, 245, 248;
+  --martin-color-light-contrast: #000000;
+  --martin-color-light-contrast-rgb: 0, 0, 0;
+  --martin-color-light-shade: #ffffff;
+  --martin-color-light-tint: #d6d6d6;
+  --martin-color-light-title: #636363;
+
+
+  --martin-background-color: #fafafa;
+  --martin-background-color-rgb: 250,250,250;
+  --martin-text-color: #303030;
+  --martin-text-color-rgb: 48, 48, 48;
+  --martin-border-color: #8b8b8b;
+  --martin-card-background: #ffffff;
+  --martin-box-shadow: -1px -1px 3px 2px rgba(153, 153, 153, 0.1), 1px 1px 3px 2px rgba(153, 153, 153, 0.1);
+}

@@ -1,0 +1,36 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1000;
+}
+
+.dialog{
+    position: fixed;
+    top: 50%;   
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--martin-color-light-shade);
+    z-index: 1000;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.closing__section {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.closing__section span {
+    color: var(--martin-color-danger-tint);
+    cursor: pointer;
+}
+
+.data__section{
+    flex-grow: 1;
+    overflow: auto;
+}

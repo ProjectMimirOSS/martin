@@ -1,0 +1,42 @@
+version: "3.0"
+services:
+  database:
+    container_name: database
+    image: postgres:13.1
+    environment:
+      POSTGRES_USER: mimir
+      POSTGRES_PASSWORD: mimirdb
+      POSTGRES_DB: mimir
+      # - POSTGRES_HOST_AUTH_METHOD=trust
+    ports: 
+      - '5433:5432'
+    volumes:
+      - martin_database:/var/lib/postgresql/data
+
+  backend:
+    container_name: martin-backend
+    build:
+      context: ./martin-backend
+      dockerfile: Dockerfile
+    image: martin-backend
+    ports: 
+      - '4000:5678'
+      - '7777:7777'
+    depends_on:
+       - database
+
+  frontend:
+    container_name: martin-frontend 
+    tty: true
+    build:
+      context: ./project-martin
+      dockerfile: Dockerfile
+    image: martin-frontend
+    ports:
+      - '5000:80'  
+    depends_on:
+      - backend
+volumes:
+  martin_database:
+
+

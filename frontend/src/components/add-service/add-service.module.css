@@ -1,0 +1,71 @@
+.add__service__component{
+    display: flex;
+    max-width: 700px;
+    min-width: 700px;
+    flex-direction: column;
+}
+
+.body__section{
+    flex: 1;
+    overflow: auto;
+}
+
+.save__btn{
+    padding: 10px 15px;
+    color: var(--martin-color-dark);
+    background: var(--martin-color-light-contrast);
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.title__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background: var(--martin-color-light-tint);
+}
+.service__section{
+    padding: 20px;   
+}
+.response__section{
+    padding: 20px;
+    border-top: 1px solid var(--martin-color-light-tint);
+}
+
+pre{
+    background: var(--martin-color-light-tint);
+    padding: 20px;
+}
+
+.parameter__list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.parameter {
+    margin-top: 10px;
+}
+
+.service__name__ip{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.cancel{
+    display: flex;
+    font-size: 16px;
+    color: var(--martin-color-light-title);
+    text-transform: uppercase;
+    justify-content: flex-end;
+    font-weight: 700;
+    padding: 0px 20px 20px 20px;
+    cursor: pointer;
+}

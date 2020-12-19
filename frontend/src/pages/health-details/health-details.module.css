@@ -1,0 +1,112 @@
+nav, .user__data {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    justify-content: space-between;
+    padding: 25px 35px;
+    background: var(--martin-color-light);
+    box-shadow: var(--martin-box-shadow);
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    /* box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); */
+}
+
+.user__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 16px;
+}
+
+.user__name {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.user__icon span {
+    font-size: 40px;
+}
+
+.logout {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.content__area {
+    padding: 75px;
+    padding-top: 110px;
+    box-sizing: border-box;
+    background: var(--martin-color-dark);
+}
+
+.summary__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.search__add {
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ans__btn {
+    padding: 10px 15px;
+    color: var(--martin-color-dark);
+    background: var(--martin-color-light-contrast);
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+}
+
+.input__fld {
+    box-sizing: border-box;
+    outline: none;
+    font-size: 15px;
+    color: var(--albert-text-color);
+    width: 100%;
+    background: var(--martin-color-light-tint);
+    border: none;
+}
+
+.input__container {
+    display: flex;
+    align-items: center;
+    background: var(--martin-color-light-tint);
+    height: 45px;
+    max-width: 500px;
+    width: 300px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.label {
+    margin-bottom: 10px;
+    color: var(--albert-text-color);
+    font-size: 15px;
+}
+
+.service__titles {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    flex: 1;
+    background: var(--martin-color-light-shade) ;
+}
+
+.service__titles>p, .service__titles>div {
+    flex-grow: 1;
+    font-weight: 700;
+    line-height: 20px;
+    flex: 1;
+    width: 150px;
+    max-width: 300px;
+}

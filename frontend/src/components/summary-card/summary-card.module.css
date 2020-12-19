@@ -1,0 +1,54 @@
+.summary__card {
+    display: flex;
+    flex-direction: column;
+    background: var(--martin-color-light-shade);
+    margin: 10px;
+}
+
+.title__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+.details__section {
+    display: flex;
+    align-items: center;
+    padding: 0px 25px;
+    padding-bottom: 25px;
+}
+
+.details__item {
+    flex: 1;
+}
+
+.status__section {
+    height: 10px;
+}
+
+.title__section{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.details__title{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--martin-color-light-title);
+}
+.details__value{
+    font-size: 16px;
+}
+
+.error {
+    color: var(--martin-color-warning);
+    background: var(--martin-color-warning);
+}
+
+.success {
+    color: var(--martin-color-success);
+    background: var(--martin-color-success);
+}

@@ -1,0 +1,36 @@
+.confirmation__container{
+    display: flex;
+    max-width: 700px;
+    min-width: 700px;
+    flex-direction: column;
+}
+.header{
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 20px;
+    background: var(--martin-background-color);
+}
+.confirmation__txt{
+    font-size: 18px;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.buttons__grid{
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.btn{
+    padding: 10px 15px;
+    color: var(--martin-color-dark);
+    background: var(--martin-color-light-contrast);
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+}

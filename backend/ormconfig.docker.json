@@ -1,0 +1,11 @@
+{
+  "type": "postgres",
+  "host": "database",
+  "port": 5432,
+  "username": "mimir",
+  "password": "mimirdb",
+  "database": "mimir",
+  "entities": ["**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
+

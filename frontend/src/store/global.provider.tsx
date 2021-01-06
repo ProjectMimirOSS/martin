@@ -4,7 +4,7 @@ export const GlobalContext = React.createContext({} as any);
 
 
 const initialState = {
-    isDarkThemed: new Date().getHours() >= 18 || new Date().getHours() <= 7 ? true : false,
+    isDarkThemed: true,
     isAuthenticated: true,
     services: {},
     summaryReport: {

@@ -8,34 +8,62 @@ import { GlobalContext } from '../../store/global.provider';
 import socket from '../../store/action.helper';
 import GlobalActions from '../../store/actions.enum';
 import { filterService } from '../../util/filter.util';
-import Confirmation from '../../components/confirmation/confirmation';
+import Input from '../../components/input/input';
 const HealthDetails = (props: any) => {
   const { state, dispatch } = useContext(GlobalContext);
   const [configureService, setConfigureService] = useState(false);
   const [search, setsearch] = useState('');
   const [serviceListState, setserviceListState] = useState(state.services);
+  const [webHook, setwebHook] = useState({id: '',  url: '', edit: false });
   const searchService = (ev: any) => {
     setsearch(ev.target.value);
     setserviceListState(filterService(ev.target.value, Object.values(state.services)));
   }
-  useEffect(() => {
-    socket.emit('init');
-    socket.on('init', (data: any) => {
-      console.log(data);
-    });
+  const updateWebHookHandler = () => {
+    if (!webHook.id) {
+      socket.emit('create_new_webhook', {url: webHook.url}); 
+    } else {
+      socket.emit('update_webhook', {url: webHook.url, id: webHook.id});
+    }
+    setwebHook({ ...webHook, edit: false })
+  }
+
+  const fetchServiceListHandler = () => {
     socket.emit('list_services');
     socket.on('services_list', (data: any) => {
       for (const iterator of data) {
         dispatch({ type: GlobalActions.UPDATE_SERVICE, payload: { services: iterator } })
         dispatch({ type: GlobalActions.UPDATE_SUMMARY, payload: { services: data } })
       }
+      console.log(state.services);
     });
+  }
+
+  const fetchWebhookHandler = () => {
+    socket.emit('list_webhooks');
+    socket.on('webhooks_list', (data: any) => {
+       setwebHook({ ...data, edit: false })
+    });
+  }
+
+  const onServiceUpdateListner = () => {
     socket.on('service_update', (data: any) => {
       dispatch({ type: GlobalActions.UPDATE_SERVICE, payload: { services: data } })
       dispatch({ type: GlobalActions.UPDATE_SUMMARY, payload: { services: data } })
     });
+    
+  }
+
+  useEffect(() => { 
+    socket.emit('init');
+    socket.on('system_data', (data: any) => {
+      dispatch({ type: GlobalActions.UPDATE_STARTTIME, payload: { startedAt: data.startedAt } })
+    });
+    fetchWebhookHandler();
+    fetchServiceListHandler();
+    onServiceUpdateListner();
     setserviceListState(state.services);
-  }, [state.services, dispatch]);
+  }, [state.services]);
 
   return (
     <Fragment>
@@ -50,7 +78,10 @@ const HealthDetails = (props: any) => {
             <input className={styles.input__fld} value={search} onChange={searchService} />
           </div>
         </div>
-        <button onClick={() => { setConfigureService(true) }} className={styles.ans__btn}>Add New Service</button>
+        <div className={styles.btn__grid}>
+          <button onClick={() => { setConfigureService(true) }} className={styles.ans__btn}>Add New Service</button>
+          <button onClick={() => { setwebHook({ ...webHook, edit: true }) }} className={styles.ans__btn}>Update Webhook</button>
+        </div>
       </div>
       <div className={styles.service__titles}>
         <p><b>Service</b></p>
@@ -63,6 +94,21 @@ const HealthDetails = (props: any) => {
       {Object.values(serviceListState).map((el: any) => <ServiceCard key={el.id} service={el}></ServiceCard>)}
       <Dialog isOpen={configureService} >
         <AddService onDismiss={() => { setConfigureService(false) }}></AddService>
+      </Dialog>
+      <Dialog isOpen={webHook.edit} >
+        <div className={styles.update__webhook__container}>
+          <div className={styles.title__container}>
+            <p className={styles.title}>Update Webhook</p>
+            <button className={styles.save__btn} onClick={() => updateWebHookHandler()}>Save</button>
+          </div>
+          <div className={styles.dialog__body}>
+            <div className={styles.webhook__input}>
+              <Input clear value={webHook.url} placeholder="Enter Webhook Url" type="text" name="Webhook Url"
+                changed={(val: string) => setwebHook({ ...webHook, url: val })} cleared={(val: string) => setwebHook({ ...webHook, url: '' })}></Input>
+            </div>
+            <p className={styles.cancel} onClick={() => { setwebHook({ ...webHook, edit: false }) }}>Cancel</p>
+          </div>
+        </div>
       </Dialog>
     </Fragment>
   );

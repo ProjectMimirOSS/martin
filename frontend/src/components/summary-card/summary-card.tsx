@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import styles from './summary-card.module.css';
+import { IEventColors } from "../../interfaces/event-colors.enum";
 
-const SummaryCard = (props: any) => {
+const SummaryCard = (props: any) => {    
     const { type, report } = props;
     let title = null;
     let representation = [];
@@ -42,7 +43,7 @@ const SummaryCard = (props: any) => {
             <div className={styles.title__section}>
                 <h3 className="title">{title}</h3>
                 <p className="status__icon">
-                    <span className='material-icons' style={{ color: `${report?.numOfDownServices <= 0 ? 'var(--martin-color-success)' : 'var(--martin-color-warning)'}` }}>  {report?.numOfDownServices > 0 ? 'warning' : 'check_circle_outline'} </span>
+                    <span className='material-icons' style={{ color: (IEventColors as any)[report.status] }}>  {report?.numOfDownServices > 0 ? 'warning' : 'check_circle_outline'} </span>
                 </p>
             </div>
             <div className={styles.details__section}>
@@ -51,7 +52,7 @@ const SummaryCard = (props: any) => {
                     <p className={styles.details__value}>{el.value}</p>
                 </div>)}
             </div>
-            <div className={styles.status__section} style={{ background: `${report?.numOfDownServices <= 0 ? 'var(--martin-color-success)' : 'var(--martin-color-warning)'}` }}></div>
+            <div className={styles.status__section} style={{ background: (IEventColors as any)[report.status] }}></div>
         </div>
     </Fragment>
 };

@@ -9,7 +9,7 @@
     font-size: 20px;
     text-transform: uppercase;
     padding: 20px;
-    background: var(--martin-background-color);
+    background: var(--martin-color-light-tint);
 }
 .confirmation__txt{
     font-size: 18px;

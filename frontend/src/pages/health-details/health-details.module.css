@@ -110,3 +110,54 @@ nav {
     width: 150px;
     max-width: 300px;
 }
+
+.btn__grid{
+    display: flex;
+    column-gap: 10px;
+}
+
+.update__webhook__container{
+    display: flex;
+    max-width: 500px;
+    min-width: 500px;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.title__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background: var(--martin-color-light-tint);
+}
+
+.save__btn{
+    padding: 10px 15px;
+    color: var(--martin-color-dark);
+    background: var(--martin-color-light-contrast);
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+}
+
+.webhook__input{
+    margin: 40px 10px;
+}
+
+.cancel{
+    display: flex;
+    font-size: 16px;
+    color: var(--martin-color-light-title);
+    text-transform: uppercase;
+    justify-content: flex-end;
+    font-weight: 700;
+    padding: 0px 20px 20px 20px;
+    cursor: pointer;
+}

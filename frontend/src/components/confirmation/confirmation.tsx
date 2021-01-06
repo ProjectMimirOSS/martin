@@ -1,8 +1,8 @@
-import React, { useContext, Fragment } from "react"
+import React, {  Fragment } from "react"
 import styles from './confirmation.module.css';
 
 const Confirmation = (props: any) => {
-    const { message, color, onConfirmation, onCancellation } = props;
+    const { message, onConfirmation, onCancellation } = props;
     return (
         <Fragment>
             <div className={styles.confirmation__container}>

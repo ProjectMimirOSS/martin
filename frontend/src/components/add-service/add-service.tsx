@@ -32,6 +32,10 @@ const AddService = (props: any) => {
         });
     }
     const submitClickedHandler = () => {
+        const _webRegex = /^(http:\/\/|https:\/\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[‌​a-z]{3}\.([a-z]+)?/;
+        if (+state.interval < 5 || state.serviceName.length < 3 || !_webRegex.test(state.url)) {
+            return;
+        }
         if (state.event === 'EDIT') {
             updateServiceHandler()
         } else {
@@ -85,6 +89,7 @@ const AddService = (props: any) => {
                         intervalUpdated={updateIntervalHandler}
                         urlUpdated={updateUrlHandler}
                         pingClicked={pingClickedHandler}
+                        showPing
                     ></ServicePing>
                 </div>
                 {/* <div className={styles.response__section}>

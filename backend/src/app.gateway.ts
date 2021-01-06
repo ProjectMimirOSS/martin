@@ -32,10 +32,12 @@ export class AppGateway implements OnApplicationShutdown, OnApplicationBootstrap
 
     @SubscribeMessage('init')
     init() {
-        return {
+        console.log('blah');
+        
+        this.publish('system_data', {
             startedAt: this.startTime,
             servicesCount: this.appRepo.servicesCount()
-        }
+        });
     }
 
     @SubscribeMessage('create_new_service')

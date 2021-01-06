@@ -14,35 +14,36 @@ const HealthDetails = (props: any) => {
   const [configureService, setConfigureService] = useState(false);
   const [search, setsearch] = useState('');
   const [serviceListState, setserviceListState] = useState(state.services);
-  const [webHook, setwebHook] = useState({id: '',  url: '', edit: false });
+  const [webHook, setwebHook] = useState({ id: '', url: '', edit: false });
   const searchService = (ev: any) => {
     setsearch(ev.target.value);
     setserviceListState(filterService(ev.target.value, Object.values(state.services)));
   }
   const updateWebHookHandler = () => {
     if (!webHook.id) {
-      socket.emit('create_new_webhook', {url: webHook.url}); 
+      socket.emit('create_new_webhook', { url: webHook.url });
     } else {
-      socket.emit('update_webhook', {url: webHook.url, id: webHook.id});
+      socket.emit('update_webhook', { url: webHook.url, id: webHook.id });
     }
     setwebHook({ ...webHook, edit: false })
   }
 
   const fetchServiceListHandler = () => {
+
     socket.emit('list_services');
     socket.on('services_list', (data: any) => {
       for (const iterator of data) {
         dispatch({ type: GlobalActions.UPDATE_SERVICE, payload: { services: iterator } })
         dispatch({ type: GlobalActions.UPDATE_SUMMARY, payload: { services: data } })
       }
-      console.log(state.services);
+      console.log(data,'services list');
     });
   }
 
   const fetchWebhookHandler = () => {
     socket.emit('list_webhooks');
     socket.on('webhooks_list', (data: any) => {
-       setwebHook({ ...data, edit: false })
+      setwebHook({ ...data, edit: false })
     });
   }
 
@@ -51,18 +52,24 @@ const HealthDetails = (props: any) => {
       dispatch({ type: GlobalActions.UPDATE_SERVICE, payload: { services: data } })
       dispatch({ type: GlobalActions.UPDATE_SUMMARY, payload: { services: data } })
     });
-    
+
   }
 
-  useEffect(() => { 
-    socket.emit('init');
-    socket.on('system_data', (data: any) => {
-      dispatch({ type: GlobalActions.UPDATE_STARTTIME, payload: { startedAt: data.startedAt } })
-    });
-    fetchWebhookHandler();
-    fetchServiceListHandler();
-    onServiceUpdateListner();
-    setserviceListState(state.services);
+  useEffect(() => {
+    console.log('use effect');
+    socket.on('connect', () => {
+      socket.emit('init');
+      socket.on('system_data', (data: any) => {
+        console.log('init',data);
+        
+        dispatch({ type: GlobalActions.UPDATE_STARTTIME, payload: { startedAt: data.startedAt } })
+      });
+      fetchWebhookHandler();
+      fetchServiceListHandler();
+      onServiceUpdateListner();
+      setserviceListState(state.services);
+    })
+
   }, [state.services]);
 
   return (

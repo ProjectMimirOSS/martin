@@ -215,9 +215,9 @@ export class CronService implements OnApplicationBootstrap, OnApplicationShutdow
                         const resp = await this.getCronInfo(iterator.serviceId);
                         const obj = { ...iterator, ...resp, lastDownAt, lastUpAt };
                         obj.status = resp.stautus ? resp.stautus : iterator.status;
-                        list.push();
+                        list.push(obj);
                     }
-                    console.log('publishing');
+                    console.log('publishing',list);
 
                     this.gatewayHelper.publish('services_list', list);
                 })

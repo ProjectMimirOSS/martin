@@ -6,7 +6,7 @@ import { Server } from 'socket.io';
 import { CreateWebHookDto, UpdateWebHookDto } from "./interfaces/webhook.interface";
 import { GatewayHelperService } from "./services/gatewayhelper.service";
 
-@WebSocketGateway(7777, { transports: ['websocket', 'polling'] })
+@WebSocketGateway({ transports: ['websocket', 'polling'] })
 export class AppGateway implements OnApplicationShutdown, OnApplicationBootstrap {
     private readonly startTime = new Date();
 

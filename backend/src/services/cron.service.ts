@@ -175,6 +175,9 @@ export class CronService implements OnApplicationBootstrap, OnApplicationShutdow
                 this.serviceSubServiceMap.set(serviceId, subServices);
                 this.serviceStatusMap.set(serviceId, event.status);
 
+                console.log(event);
+                
+
                 this.gatewayHelper.publish('service_update', { ...event, serviceId, nextExecutionAt })
                 if (recentCritical || recentRecovery?.affected > 0 || recentlyDown.length > 0 || recentlyUp.length > 0)
                     this.webHook.notify(event);

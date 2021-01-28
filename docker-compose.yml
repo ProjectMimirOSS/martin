@@ -1,37 +1,35 @@
 version: "3.0"
 services:
-  database:
-    container_name: database
-    image: postgres:13.1
-    environment:
-      POSTGRES_USER: mimir
-      POSTGRES_PASSWORD: mimirdb
-      POSTGRES_DB: mimir
-      # - POSTGRES_HOST_AUTH_METHOD=trust
-    ports: 
-      - '${POSTGRES_PORT}:5432'
-    volumes:
-      - martin_database:/var/lib/postgresql/data
-
-  backend:
-    container_name: martin-backend
-    image: thelunarwolf/martin-backend:latest
-    ports: 
-      - '${BACKEND_PORT}:5678'
-      - '7777:7777'
-    depends_on:
-       - database
-
-  frontend:
-    container_name: martin-frontend 
-    tty: true
-    image: thelunarwolf/martin-frontend:latest
-    environment:
-       BACKEND_IP: ${BACKEND_IP}
-       PROJECT_TITLE: ${PROJECT_TITLE}
-    ports:
-      - '${FRONTEND_PORT}:80'  
-    depends_on:
-      - backend
+ database:
+   container_name: database
+   image: postgres:13.1
+   environment:
+     POSTGRES_USER: mimir
+     POSTGRES_PASSWORD: mimirdb
+     POSTGRES_DB: mimir
+   ports:
+     - '${POSTGRES_PORT}:5432'
+   volumes:
+     - martin_database:/var/lib/postgresql/data
+ 
+ backend:
+   container_name: martin-backend
+   image: thelunarwolf/martin-backend:latest
+   ports:
+     - '${BACKEND_PORT}:7777'
+   depends_on:
+      - database
+ 
+ frontend:
+   container_name: martin-frontend
+   tty: true
+   image: thelunarwolf/martin-frontend:latest
+   environment:
+     BACKEND_IP: ${BACKEND_IP}
+     PROJECT_TITLE: ${PROJECT_TITLE}
+   ports:
+     - '${FRONTEND_PORT}:80' 
+   depends_on:
+     - backend
 volumes:
-  martin_database:
+ martin_database:

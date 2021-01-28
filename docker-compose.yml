@@ -15,10 +15,7 @@ services:
 
   backend:
     container_name: martin-backend
-    # build:
-    #   context: ./backend
-    #   dockerfile: Dockerfile
-    image: thelunarwolf/martin-backend:0.0.1
+    image: thelunarwolf/martin-backend:latest
     ports: 
       - '${BACKEND_PORT}:5678'
       - '7777:7777'
@@ -28,22 +25,13 @@ services:
   frontend:
     container_name: martin-frontend 
     tty: true
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-      args: 
-         BACKEND_IP: ${BACKEND_IP}
-         PROJECT_TITLE: ${PROJECT_TITLE}
-    image: martin-frontend
-    # image: thelunarwolf/martin-frontend:latest
-    # environment:
-    #   BACKEND_IP: ${BACKEND_IP}
-    #   PROJECT_TITLE: ${PROJECT_TITLE}
+    image: thelunarwolf/martin-frontend:latest
+    environment:
+       BACKEND_IP: ${BACKEND_IP}
+       PROJECT_TITLE: ${PROJECT_TITLE}
     ports:
       - '${FRONTEND_PORT}:80'  
     depends_on:
       - backend
 volumes:
   martin_database:
-
-    # sudo POSTGRES_PORT=5444 BACKEND_PORT=5052 FRONTEND_PORT=5051 SERVER_IP=35.190.136.97 PROJECT_TITLE="STANPLUS HEALTH" docker-compose down
